@@ -3,13 +3,17 @@
 <div align="center">
   <img src="src/logo.jpg" alt="MaxBot Logo" width="200" height="200">
 
+[![Donate](https://img.shields.io/badge/Donate-Yoomoney-green.svg)](https://yoomoney.ru/to/410019620244262)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-Library-blue.svg)](https://script.google.com/)
 [![MAX API](https://img.shields.io/badge/MAX%20API-Documentation-green.svg)](https://dev.max.ru/docs-api)
+[![Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-Library-blue.svg)](https://script.google.com/)
+![GitHub stars](https://img.shields.io/github/stars/Guf-Hub/MaxBot)
+![GitHub forks](https://img.shields.io/github/forks/Guf-Hub/MaxBot)
+![GitHub last commit](https://img.shields.io/github/last-commit/Guf-Hub/MaxBot)
 
 </div>
 
-Полнофункциональная библиотека для работы с API MAX в Google Apps Script с поддержкой вебхуков, медиафайлов, клавиатур и методов API.
+Полнофункциональная библиотека для работы с API MAX в Google Apps Script с поддержкой вебхуков, создания медиафайлов, клавиатур и методов API.
 
 ## 📦 ID библиотеки Apps Script
 
