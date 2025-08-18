@@ -615,3 +615,63 @@ class Bot {
     console.log("Действие в чате:", chatAction);
   }
 }
+
+function init(accessToken, webhookUrl) {
+  return new Bot(accessToken, webhookUrl);
+}
+
+/**
+ * Создает экземпляр бота с кастомным классом
+ * @param {string} accessToken - Токен доступа
+ * @param {Function} CustomBotClass - Класс бота для наследования
+ * @param {string} [webhookUrl] - URL вебхука (опционально)
+ * @returns {Bot} Экземпляр кастомного бота
+ */
+function createBot(accessToken, CustomBotClass, webhookUrl = null) {
+  // Создаем базовый экземпляр бота
+  const baseBot = new Bot(accessToken, webhookUrl);
+
+  // Создаем экземпляр кастомного класса
+  const customBot = new CustomBotClass(accessToken, webhookUrl);
+
+  // Копируем все методы и свойства базового бота в кастомный
+  for (const key in baseBot) {
+    if (baseBot.hasOwnProperty(key) && !customBot.hasOwnProperty(key)) {
+      customBot[key] = baseBot[key];
+    }
+  }
+
+  // Копируем прототипные методы
+  const basePrototype = Object.getPrototypeOf(baseBot);
+  const customPrototype = Object.getPrototypeOf(customBot);
+
+  for (const key in basePrototype) {
+    if (
+      basePrototype.hasOwnProperty(key) &&
+      !customPrototype.hasOwnProperty(key)
+    ) {
+      customPrototype[key] = basePrototype[key];
+    }
+  }
+
+  return customBot;
+}
+
+/**
+ * Добавляет кастомные обработчики к экземпляру бота (Mixin паттерн)
+ * @param {Bot} bot - Экземпляр бота
+ * @param {Object} handlers - Объект с обработчиками событий
+ * @param {Function} handlers.onMessage - Обработчик сообщений
+ * @param {Function} handlers.onCallback - Обработчик callback кнопок
+ * @param {Function} [handlers.onChatMember] - Обработчик изменений участников
+ * @param {Function} [handlers.onChatAction] - Обработчик действий в чате
+ * @returns {Bot} Бот с добавленными обработчиками
+ */
+function withCustomHandlers(bot, handlers) {
+  return Object.assign(bot, {
+    onMessage: handlers.onMessage?.bind(bot),
+    onCallback: handlers.onCallback?.bind(bot),
+    onChatMember: handlers.onChatMember?.bind(bot),
+    onChatAction: handlers.onChatAction?.bind(bot),
+  });
+}

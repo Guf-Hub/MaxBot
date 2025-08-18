@@ -3,6 +3,7 @@
  */
 
 // Создание экземпляра бота
+// const bot = MaxBot.init("YOUR_ACCESS_TOKEN");
 const bot = new Bot("YOUR_ACCESS_TOKEN");
 
 /**

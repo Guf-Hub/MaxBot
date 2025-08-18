@@ -64,11 +64,8 @@ Google Apps Script библиотека для работы с методами 
 ### Простое использование
 
 ```javascript
-// Импорт библиотеки (если используете как библиотеку)
-const { Bot } = MaxBot;
-
 // Создание экземпляра бота
-const bot = new Bot("YOUR_ACCESS_TOKEN");
+const bot = MaxBot.init("YOUR_ACCESS_TOKEN");
 
 // Получение информации о боте
 const botInfo = bot.getMe();
@@ -84,7 +81,49 @@ bot.sendMessage({
 ### С обработчиками событий
 
 ```javascript
-class MyBot extends Bot {
+// Создание экземпляра бота
+const bot = MaxBot.init("YOUR_ACCESS_TOKEN");
+
+// Обработка сообщений
+bot.onMessage = function (message) {
+  const chatId = message.recipient.data.chat_id;
+  const text = message.body.text;
+
+  if (text === "/start") {
+    this.sendMessage({
+      text: "Добро пожаловать!",
+      chatId: chatId,
+    });
+  } else {
+    this.sendMessage({
+      text: `Вы написали: ${text}`,
+      chatId: chatId,
+    });
+  }
+};
+
+// Обработка callback кнопок
+bot.onCallback = function (callback) {
+  const chatId = callback.chat_id;
+  const payload = callback.payload;
+
+  this.sendMessage({
+    text: `Нажата кнопка: ${payload}`,
+    chatId: chatId,
+  });
+};
+```
+
+### С использованием кастомного класса (через функцию-обертку)
+
+```javascript
+// Ваш кастомный класс (без наследования от Bot)
+class MyBot {
+  constructor(accessToken, webhookUrl) {
+    this.accessToken = accessToken;
+    this.webhookUrl = webhookUrl;
+  }
+
   onMessage(message) {
     const chatId = message.recipient.data.chat_id;
     const text = message.body.text;
@@ -111,45 +150,42 @@ class MyBot extends Bot {
       chatId: chatId,
     });
   }
+
+  // Дополнительные методы
+  customMethod() {
+    console.log("Кастомный метод");
+  }
 }
 
-const myBot = new MyBot("YOUR_ACCESS_TOKEN");
+// Создание бота через функцию-обертку
+const webhookUrl = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const bot = MaxBot.createBot("YOUR_ACCESS_TOKEN", MyBot, webhookUrl);
+
+// Использование кастомных методов
+bot.customMethod();
 ```
 
-### Настройка веб-приложения
-
-#### 1. Инициализация бота
+### С использованием Mixin (альтернативный подход)
 
 ```javascript
-// Импорт библиотеки MaxBot
-const { Bot } = MaxBot;
+// Создание бота
+const bot = MaxBot.init("YOUR_ACCESS_TOKEN");
 
-// Создание экземпляра бота
-const bot = new Bot("YOUR_ACCESS_TOKEN");
-```
-
-#### 2. Создание кастомной версии бота
-
-Создайте класс, наследующий от `Bot`, и переопределите нужные методы:
-
-```javascript
-class MyBot extends Bot {
-  onMessage(message) {
-    // Ваша логика обработки сообщений
+// Добавление обработчиков через Mixin
+const enhancedBot = MaxBot.withCustomHandlers(bot, {
+  onMessage: function (message) {
     const chatId = message.recipient.data.chat_id;
     const text = message.body.text;
 
-    // Пример обработки команды /start
     if (text === "/start") {
       this.sendMessage({
         text: "Добро пожаловать!",
         chatId: chatId,
       });
     }
-  }
+  },
 
-  onCallback(callback) {
-    // Ваша логика обработки callback кнопок
+  onCallback: function (callback) {
     const chatId = callback.chat_id;
     const payload = callback.payload;
 
@@ -157,11 +193,50 @@ class MyBot extends Bot {
       text: `Нажата кнопка: ${payload}`,
       chatId: chatId,
     });
-  }
-}
+  },
+});
+```
 
-// Создание экземпляра кастомного бота
-const myBot = new MyBot("YOUR_ACCESS_TOKEN");
+### Настройка веб-приложения
+
+#### 1. Инициализация бота
+
+```javascript
+// Создание экземпляра бота
+const bot = MaxBot.init("YOUR_ACCESS_TOKEN");
+```
+
+#### 2. Создание кастомной версии бота
+
+Создайте экземпляр бота и назначьте обработчики событий:
+
+```javascript
+// Обработка сообщений
+bot.onMessage = function (message) {
+  // Ваша логика обработки сообщений
+  const chatId = message.recipient.data.chat_id;
+  const text = message.body.text;
+
+  // Пример обработки команды /start
+  if (text === "/start") {
+    this.sendMessage({
+      text: "Добро пожаловать!",
+      chatId: chatId,
+    });
+  }
+};
+
+// Обработка callback кнопок
+bot.onCallback = function (callback) {
+  // Ваша логика обработки callback кнопок
+  const chatId = callback.chat_id;
+  const payload = callback.payload;
+
+  this.sendMessage({
+    text: `Нажата кнопка: ${payload}`,
+    chatId: chatId,
+  });
+};
 ```
 
 #### 3. Функция doPost для обработки вебхуков
@@ -170,7 +245,7 @@ const myBot = new MyBot("YOUR_ACCESS_TOKEN");
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    myBot.handleWebhook(data);
+    bot.handleWebhook(data);
     return ContentService.createTextOutput(
       JSON.stringify({
         status: "success",
@@ -240,6 +315,7 @@ bot.deleteWebhook();
 - `keyboard.js` - Создание клавиатур
 - `command.js` - Обработка команд
 - `error-handling.js` - Обработка ошибок
+- `inheritance.js` - Пример создания кастомного бота с помощью createBot()
 
 ### Отправка сообщений
 

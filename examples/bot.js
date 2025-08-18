@@ -8,7 +8,8 @@ const BOT_TOKEN = "YOUR_ACCESS_TOKEN_HERE";
 const WEBHOOK_SECRET = "your-webhook-secret";
 
 // Создание экземпляра бота
-const bot = new Bot(BOT_TOKEN);
+// const bot = MaxBot.init("YOUR_ACCESS_TOKEN");
+const bot = new Bot("YOUR_ACCESS_TOKEN");
 
 // Настройка обработчиков событий
 class MyBot extends Bot {
