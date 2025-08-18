@@ -1,21 +1,18 @@
-# MaxBot - Библиотека для работы с API MAX
+# MaxBot <a href="https://dev.max.ru/docs-api"><img src="src/logo.jpg" width="35" height="32"></a>
 
 <div align="center">
-  <img src="src/logo.jpg" alt="MaxBot Logo" width="200" height="200">
 
 [![Donate](https://img.shields.io/badge/Donate-Yoomoney-green.svg)](https://yoomoney.ru/to/410019620244262)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MAX API](https://img.shields.io/badge/MAX%20API-Documentation-green.svg)](https://dev.max.ru/docs-api)
 [![Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-Library-blue.svg)](https://script.google.com/)
-![GitHub stars](https://img.shields.io/github/stars/Guf-Hub/MaxBot)
-![GitHub forks](https://img.shields.io/github/forks/Guf-Hub/MaxBot)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Guf-Hub/MaxBot)
+![GitHub stars](https://img.shields.io/github/stars/Guf-Hub/MaxBot)
 
 </div>
 
-Полнофункциональная библиотека для работы с API MAX в Google Apps Script с поддержкой вебхуков, создания медиафайлов, клавиатур и методов API.
+Google Apps Script библиотека для работы с методами API MAX с поддержкой вебхуков, созданием медиафайлов, клавиатур.
 
-## 📦 ID библиотеки Apps Script
+## 📦 ID библиотеки
 
 ```
 1dUzlK1qVuXOB8OOKgWazEBtCSbFRqIUv9F0-yQXM4K9xk6UlH-Ks2aOU
@@ -37,7 +34,7 @@
 2. **Создайте новый проект**
 3. **Добавьте библиотеку MaxBot:**
    - В редакторе нажмите на значок `+` рядом с "Библиотеки"
-   - Введите ID библиотеки: `1dUzlK1qVuXOB8OOKgWazEBtCSbFRqIUv9F0-yQXM4K9xk6UlH-Ks2aOU`
+   - Введите ID библиотеки
    - Выберите последнюю версию
    - Нажмите "Добавить"
 
