@@ -1,14 +1,14 @@
 # MaxBot <a href="https://dev.max.ru/docs-api"><img src="src/logo.jpg" width="35" height="32"></a>
 
-<div align="center">
+<!-- <div align="center"> -->
 
 [![Donate](https://img.shields.io/badge/Donate-Yoomoney-green.svg)](https://yoomoney.ru/to/410019620244262)
-[![MAX API](https://img.shields.io/badge/MAX%20API-Documentation-green.svg)](https://dev.max.ru/docs-api)
 [![Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-Library-blue.svg)](https://script.google.com/)
+![javascript](https://img.shields.io/badge/lang-javascript-red)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Guf-Hub/MaxBot)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Guf-Hub/MaxBot)
-![GitHub stars](https://img.shields.io/github/stars/Guf-Hub/MaxBot)
 
-</div>
+<!-- </div> -->
 
 Google Apps Script библиотека для работы с методами API MAX с поддержкой вебхуков, созданием медиафайлов, клавиатур.
 
