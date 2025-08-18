@@ -616,6 +616,12 @@ class Bot {
   }
 }
 
+/**
+ * Создает экземпляр бота
+ * @param {string} accessToken - Токен доступа
+ * @param {string} [webhookUrl] - URL вебхука (опционально)
+ * @returns {Bot} Экземпляр бота
+ */
 function init(accessToken, webhookUrl) {
   return new Bot(accessToken, webhookUrl);
 }

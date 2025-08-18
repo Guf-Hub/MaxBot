@@ -95,7 +95,7 @@ function example2b() {
     .settings("Настройки")
     .profile("Мой профиль")
     .info("Информация о боте")
-    .contact("Связаться с поддержкой")
+    .support("Связаться с поддержкой")
     .feedback("Оставить отзыв")
     .language("Изменить язык")
     .notifications("Настройки уведомлений")

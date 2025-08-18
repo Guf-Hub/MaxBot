@@ -830,6 +830,8 @@ class CommandBuilder {
       .menu("Главное меню")
       .settings("Настройки")
       .profile("Мой профиль")
+      .info("О боте")
+      .support("Связаться с поддержкой")
       .build();
   }
 

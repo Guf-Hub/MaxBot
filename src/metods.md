@@ -141,7 +141,7 @@
 - `settings(description)` - Команда /settings
 - `profile(description)` - Команда /profile
 - `info(description)` - Команда /info
-- `contact(description)` - Команда /contact
+- `support(description)` - Команда /support
 - `feedback(description)` - Команда /feedback
 - `language(description)` - Команда /language
 - `notifications(description)` - Команда /notifications
