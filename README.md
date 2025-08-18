@@ -1,4 +1,8 @@
+<p>
+
 # MaxBot <a href="https://dev.max.ru/docs-api"><img src="src/logo.jpg" width="35" height="32"></a>
+
+</p>
 
 <!-- <div align="center"> -->
 
